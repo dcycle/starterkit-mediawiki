@@ -1,0 +1,12 @@
+.DS_Store
+
+# You can put things like database dumps, temporary files in ./do-not-commit,
+# which you might have to create first, and avoid them being accidentally
+# committed to git.
+do-not-commit
+
+# We want to ignore environment variables used by Docker Compose
+.env
+
+# LocalSettings.php contains environment-specific details.
+LocalSettings.php

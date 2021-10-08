@@ -1,0 +1,12 @@
+---
+# This file tells CirlceCI that ./scripts/ci.sh needs to be run on a virtual
+# machine with Docker installed in order for tests to pass.
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Tests
+          command: ./scripts/ci.sh
