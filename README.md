@@ -3,6 +3,8 @@ Starterkit Wiki
 
 This project uses Docker and Docker Compose to set up a fully working Wiki based on [Mediawiki](https://www.mediawiki.org/wiki/MediaWiki).
 
+[![CircleCI](https://circleci.com/gh/dcycle/starterkit-mediawiki/tree/master.svg?style=svg)](https://circleci.com/gh/dcycle/starterkit-mediawiki/tree/master)
+
 Quick start
 -----
 
