@@ -2,4 +2,4 @@ version: '3'
 services:
   mediawiki:
     volumes:
-      - ./LocalSettings.php:/var/www/html/LocalSettings.php
+      - ${PWD}/LocalSettings.php:/var/www/html/LocalSettings.php
