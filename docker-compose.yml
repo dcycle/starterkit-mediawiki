@@ -12,13 +12,18 @@ services:
     links:
       - database
     volumes:
-      - /var/www/html/images
+      - "uploaded-files:/var/www/html/images"
   database:
     image: mariadb
     restart: always
+    volumes:
+      - "mysql:/var/lib/mysql"
     environment:
-      # @see https://phabricator.wikimedia.org/source/mediawiki/browse/master/includes/DefaultSettings.php
       MYSQL_DATABASE: my_wiki
       MYSQL_USER: wikiuser
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+
+volumes:
+  uploaded-files:
+  mysql:
