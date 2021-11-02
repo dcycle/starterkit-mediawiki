@@ -1,5 +1,0 @@
-version: '3'
-services:
-  mediawiki:
-    volumes:
-      - ${PWD}/LocalSettings.php:/var/www/html/LocalSettings.php

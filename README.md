@@ -25,6 +25,10 @@ If you want to **destroy all your data**, run:
 
     ./scripts/destroy.sh
 
+If you want to keep your data for next time, run:
+
+    docker-compose down
+
 Uploading your logo, or other files
 -----
 
