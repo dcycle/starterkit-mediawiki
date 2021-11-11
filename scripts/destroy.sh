@@ -17,6 +17,11 @@ rm -f ./LocalSettings.php
 
 echo ''
 echo '-----'
+echo 'Destroying the do-not-commit directory.'
+rm -rf ./do-not-commit
+
+echo ''
+echo '-----'
 echo 'Your environment is completely destroyed.'
 echo ''
 echo ''

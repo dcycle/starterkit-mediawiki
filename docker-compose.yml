@@ -5,13 +5,16 @@
 version: '3'
 services:
   mediawiki:
-    image: mediawiki
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: always
     ports:
       - 8080:80
     links:
       - database
     volumes:
+      - "./do-not-commit:/do-not-commit"
       - "uploaded-files:/var/www/html/images"
   database:
     image: mariadb
