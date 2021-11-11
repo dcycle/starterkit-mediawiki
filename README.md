@@ -50,13 +50,6 @@ Extensions are installed in the Dockerfile, and you will probably need to modify
 
 You must also add the line "include('/load-extensions.php');" to your unversioned copy of LocalSettings.php once your wiki is set up.
 
-Troubleshooting
------
-
-If you get PHP "Deprecation" errors showing up on your wiki page, and you don't want to see them, you can add this line just after "<?php" in your unversioned LocalSettings.php file:
-
-    error_reporting(E_ALL ^ ( E_DEPRECATED ));
-
 Resources
 -----
 
