@@ -14,8 +14,8 @@ services:
     links:
       - database
     volumes:
-      - "uploaded-files:/var/www/html/images"
       - "./do-not-commit:/do-not-commit"
+      - "uploaded-files:/var/www/html/images"
   database:
     image: mariadb
     restart: always

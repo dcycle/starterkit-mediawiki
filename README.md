@@ -50,6 +50,13 @@ Extensions are installed in the Dockerfile, and you will probably need to modify
 
 You must also add the line "include('/load-extensions.php');" to your unversioned copy of LocalSettings.php once your wiki is set up.
 
+Errors and PHP logs
+-----
+
+Errors and notices will not be displayed on screen. To see the error logs you can run:
+
+    tail ./do-not-commit/php-log.log 
+
 Resources
 -----
 

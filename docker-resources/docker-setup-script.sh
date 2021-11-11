@@ -12,4 +12,5 @@ apt-get update
 apt-get --no-install-recommends -y install unzip
 rm -rf /var/lib/apt/lists/*
 echo "display_errors = Off" >> /usr/local/etc/php/php.ini
+echo "log_errors = On" >> /usr/local/etc/php/php.ini
 echo "error_log = /do-not-commit/php-log.log" >> /usr/local/etc/php/php.ini
