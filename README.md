@@ -41,6 +41,22 @@ If you want to upload files:
 * Edit LocalSettings.php again and change the line '$wgLogos = [ '1x' => "$wgResourceBasePath/resources/assets/wiki.png" ];' to, in this example, '$wgLogos = [ '1x' => "/images/6/6e/Logo.jpg" ];'.
 * Empty your browser cache, or try in a different browser you haven't used before, and you'll see your logo!
 
+Installing extensions
+-----
+
+This starterkit provides a single extension, [EmbedVideo](https://www.mediawiki.org/wiki/Extension:EmbedVideo#Installation), but you can use its installation as a template to install your own extensions.
+
+Extensions are installed in the Dockerfile, and you will probably need to modify that in your own fork or copy of this repo.
+
+You must also add the line "include('/load-extensions.php');" to your unversioned copy of LocalSettings.php once your wiki is set up.
+
+Troubleshooting
+-----
+
+If you get PHP "Deprecation" errors showing up on your wiki page, and you don't want to see them, you can add this line just after "<?php" in your unversioned LocalSettings.php file:
+
+    error_reporting(E_ALL ^ ( E_DEPRECATED ));
+
 Resources
 -----
 

@@ -18,7 +18,7 @@ docker pull mediawiki
 echo ''
 echo '-----'
 echo 'Starting the environment.'
-docker-compose up -d
+docker-compose up -d --build
 if [[ -f LocalSettings.php ]]; then
   echo '(LocalSettings.php exists, just updating the installation with existing details.)'
   docker cp LocalSettings.php $(docker-compose ps -q mediawiki):/var/www/html/LocalSettings.php
