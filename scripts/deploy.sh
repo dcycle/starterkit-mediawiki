@@ -32,12 +32,13 @@ if [[ ! -f ./LocalSettings.php ]]; then
   echo '-----'
   echo 'Importing starter data...'
   ./scripts/wait-for-database.sh
-  cp ./starter-data/LocalSettings.example.php ./LocalSettings.php
+  cp ./docker-resources/starter-data/LocalSettings.example.php ./LocalSettings.php
+  docker-compose exec mediawiki /bin/bash -c '/docker-resources/import-starter-data.sh'
   rm -rf ./do-not-commit/backups/starter
-  mkdir -p ./do-not-commit/backups
-  cp -r ./starter-data/data ./do-not-commit/backups/starter
+  docker-compose exec mediawiki /bin/bash -c 'mkdir -p /do-not-commit/backups'
+  docker-compose exec mediawiki /bin/bash -c 'cp -r /docker-resources/starter-data/data /do-not-commit/backups/starter'
   ./scripts/revert-from-backup.sh starter
-  rm -rf ./do-not-commit/backups/starter
+  docker-compose exec mediawiki /bin/bash -c 'rm -rf /do-not-commit/backups/starter'
   echo 'Redeploying...'
   ./scripts/deploy.sh
 else
