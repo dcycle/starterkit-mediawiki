@@ -9,6 +9,8 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
+    environment:
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - 8080:80
     links:
@@ -16,11 +18,14 @@ services:
     volumes:
       - "./do-not-commit:/do-not-commit"
       - "uploaded-files:/var/www/html/images"
+      - "./docker-resources:/docker-resources"
   database:
     image: mariadb
     restart: always
     volumes:
       - "mysql:/var/lib/mysql"
+      - "./do-not-commit:/do-not-commit"
+      - "./docker-resources:/docker-resources"
     environment:
       MYSQL_DATABASE: my_wiki
       MYSQL_USER: wikiuser

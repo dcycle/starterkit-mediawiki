@@ -27,13 +27,26 @@ else
   docker-compose up -d
 fi
 
-if [[ -f LocalSettings.php ]]; then
+if [[ ! -f ./LocalSettings.php ]]; then
+  echo ''
+  echo '-----'
+  echo 'Importing starter data...'
+  ./scripts/wait-for-database.sh
+  cp ./starter-data/LocalSettings.example.php ./LocalSettings.php
+  rm -rf ./do-not-commit/backups/starter
+  docker-compose exec mediawiki /bin/bash -c 'mkdir -p /do-not-commit/backups'
+  docker-compose exec mediawiki /bin/bash -c 'cp -r /starter-data/data /do-not-commit/backups/starter'
+  ./scripts/revert-from-backup.sh starter
+  docker-compose exec mediawiki /bin/bash -c 'rm -rf /do-not-commit/backups/starter'
+  echo 'Redeploying...'
+  ./scripts/deploy.sh
+else
+  echo ''
+  echo '-----'
+  echo 'Resetting admin password.'
+  ./scripts/reset-password.sh admin
   echo ''
   echo '-----'
   echo 'Getting the login details.'
   ./scripts/uli.sh
-else
-  echo ''
-  echo '-----'
-  source ./scripts/lib/initial-setup-instructions.source.sh
 fi

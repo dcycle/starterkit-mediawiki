@@ -11,4 +11,5 @@ if [ -f "$ENVFILELOCATION" ]; then
 fi
 {
   echo "MYSQL_PASSWORD=$(./scripts/uuid.sh)"
+  echo "WIKI_SALT=$(./scripts/uuid.sh)"
 }  >> "$ENVFILELOCATION"
