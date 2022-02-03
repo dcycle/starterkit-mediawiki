@@ -4,6 +4,7 @@
 #
 set -e
 
+source .env
 if [[ -z "$1" ]]; then
   >&2 echo "Please specify a username."
   exit 1;
@@ -15,7 +16,7 @@ NEWPW=$(./scripts/uuid.sh)
 
 echo ""
 echo "Will attempt to change the password for user $1:"
-echo "If this does not work, visit http://0.0.0.0:8080/api.php?action=query&format=json&list=allusers"
+echo "If this does not work, visit http://0.0.0.0:$DOCKERPORT/api.php?action=query&format=json&list=allusers"
 echo "if you forgot your username."
 
 docker-compose exec mediawiki /bin/bash -c "cd maintenance && php changePassword.php --user=$1 --password=$NEWPW"

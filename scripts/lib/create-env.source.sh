@@ -4,6 +4,7 @@
 #
 set -e
 
+source ./config/versioned
 ENVFILELOCATION=./.env
 if [ -f "$ENVFILELOCATION" ]; then
   >&2 echo "Cannot call ./scripts/create-env.source.sh if $ENVFILELOCATION exists."
@@ -12,4 +13,5 @@ fi
 {
   echo "MYSQL_PASSWORD=$(./scripts/uuid.sh)"
   echo "WIKI_SALT=$(./scripts/uuid.sh)"
+  echo "DOCKERPORT=$DOCKERPORT"
 }  >> "$ENVFILELOCATION"

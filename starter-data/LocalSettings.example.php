@@ -30,7 +30,7 @@ $wgMetaNamespace = "Mediawiki_Starterkit";
 $wgScriptPath = "";
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer = "http://0.0.0.0:8080";
+$wgServer = "http://0.0.0.0:" . getenv('DOCKERPORT');
 
 ## The URL path to static resources (images, scripts, etc.)
 $wgResourceBasePath = $wgScriptPath;
