@@ -8,6 +8,12 @@ services:
     environment:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       DOCKERPORT: ${DOCKERPORT}
+      # For use with LetsEncrypt, see README.md
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      # For use with LetsEncrypt, see README.md
+      LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+      # For use with LetsEncrypt, see README.md
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
     ports:
       - ${DOCKERPORT}:80
     links:

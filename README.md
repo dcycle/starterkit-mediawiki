@@ -55,7 +55,35 @@ Errors and PHP logs
 
 Errors and notices will not be displayed on screen. To see the error logs you can run:
 
-    tail ./do-not-commit/php-log.log 
+    tail ./do-not-commit/php-log.log
+
+LetsEncrypt
+-----
+
+If you would like to use LetsEncrypt to host your wiki on a secure HTTPS protocol:
+
+#### First, deploy as normal
+
+    ./scripts/deploy.sh
+
+#### Second, edit the unversioned .env file at the root of your project on your production Docker host, adding the following
+
+    # .env
+    ...
+    VIRTUAL_HOST=example.com
+    LETSENCRYPT_HOST=example.com
+    LETSENCRYPT_EMAIL=admin@example.com
+
+#### Third, deploy again
+
+    ./scripts/deploy.sh
+
+#### Finally, set up Letsencrypt
+
+Follow the instructions in the following blog posts:
+
+* [Letsencrypt HTTPS for Drupal on Docker, October 03, 2017, Dcycle Blog](https://blog.dcycle.com/blog/170a6078/letsencrypt-drupal-docker/)
+* [Deploying Letsencrypt with Docker-Compose, October 06, 2017, Dcycle Blog](https://blog.dcycle.com/blog/7f3ea9e1/letsencrypt-docker-compose/)
 
 Resources
 -----
