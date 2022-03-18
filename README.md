@@ -85,6 +85,30 @@ Follow the instructions in the following blog posts:
 * [Letsencrypt HTTPS for Drupal on Docker, October 03, 2017, Dcycle Blog](https://blog.dcycle.com/blog/170a6078/letsencrypt-drupal-docker/)
 * [Deploying Letsencrypt with Docker-Compose, October 06, 2017, Dcycle Blog](https://blog.dcycle.com/blog/7f3ea9e1/letsencrypt-docker-compose/)
 
+Making a backup and restoring from a backup
+-----
+
+    ./scripts/make-backup.sh
+
+Backups are stored in ./do-not-commit/backups
+
+To restore from a backup, run:
+
+    ./scripts/revert-from-backup.sh
+
+Using the database from the command line
+-----
+
+    docker-compose exec database /bin/bash
+    ...
+    mysql -u "$MYSQL_USER" -p"$MYSQL_PASSWORD"
+    ...
+    use my_wiki
+
+You can now perform database operations.
+
+You are encouraged to create a backup before fiddling with the database (see above).
+
 Resources
 -----
 
