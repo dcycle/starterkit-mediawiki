@@ -109,6 +109,19 @@ You can now perform database operations.
 
 You are encouraged to create a backup before fiddling with the database (see above).
 
+Getting a database from a remote environment
+-----
+
+You must start by defining the remote environment, for example "stage", by copying the example (dummy) environment information, and putting in your real environment information. Something like:
+
+    cp ./scripts/remote/environments/example ./scripts/remote/environments/stage
+
+Then modify the file ./scripts/remote/environments/fr/info.source.sh with the stage environment information.
+
+Now, every time you want to fetch the data from your stage environment, you would run:
+
+    ./scripts/get-database-from-remote.sh stage
+
 Resources
 -----
 
