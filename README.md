@@ -48,8 +48,6 @@ This starterkit provides a single extension, [EmbedVideo](https://www.mediawiki.
 
 Extensions are installed in the Dockerfile, and you will probably need to modify that in your own fork or copy of this repo.
 
-You must also add the line "include('/load-extensions.php');" to your unversioned copy of LocalSettings.php once your wiki is set up.
-
 Errors and PHP logs
 -----
 
