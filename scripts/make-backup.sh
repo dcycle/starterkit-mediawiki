@@ -19,6 +19,6 @@ docker-compose exec -T database /bin/bash -c "mkdir -p $MYCONTAINERDIR"
 source ./.env
 docker-compose exec -T database /bin/bash -c "export MYSQL_PWD=$MYSQL_PASSWORD; mysqldump -u wikiuser my_wiki > $MYCONTAINERDIR/backup.sql"
 
-docker-compose exec -t mediawiki /bin/bash -c "cp -r /var/www/html/images $MYCONTAINERDIR/images"
+docker-compose exec -T mediawiki /bin/bash -c "cp -r /var/www/html/images $MYCONTAINERDIR/images"
 
 echo "Backup created in $MYDIR"
