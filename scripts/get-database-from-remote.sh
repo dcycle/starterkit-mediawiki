@@ -29,7 +29,7 @@ echo ""
 echo ""
 echo "Importing the database to local."
 echo ""
-./scripts/revert-from-backup "$ID"
+./scripts/revert-from-backup.sh "$ID"
 
 echo ""
 echo "Done importing datase from $ENV to local"
