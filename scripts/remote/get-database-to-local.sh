@@ -46,7 +46,7 @@ echo "Will copy the backup to the local installation."
 echo ""
 
 mkdir -p ./do-not-commit/backups
-scp -r "$USER"@"$IP": "$LOC/do-not-commit/backups/$ID" ./do-not-commit/backups/
+scp -r "$USER"@"$IP":"$LOC/do-not-commit/backups/$ID" ./do-not-commit/backups/"$ID"
 
 echo ""
 echo "Done getting database from remote $ENV"
