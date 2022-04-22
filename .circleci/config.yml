@@ -1,10 +1,10 @@
+# [CircleCI](https://circleci.com).
 ---
-# This file tells CirlceCI that ./scripts/ci.sh needs to be run on a virtual
-# machine with Docker installed in order for tests to pass.
-version: 2
+version: 2.1
 jobs:
   build:
-    machine: true
+    machine:
+      image: ubuntu-2004:202201-02
     steps:
       - checkout
       - run:
