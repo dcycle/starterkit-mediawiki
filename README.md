@@ -1,4 +1,4 @@
-Starterkit Wiki
+Dcycle Mediawiki Starterkit
 -----
 
 This project uses Docker and Docker Compose to set up a fully working Wiki based on [Mediawiki](https://www.mediawiki.org/wiki/MediaWiki).
