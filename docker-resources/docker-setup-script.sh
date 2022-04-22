@@ -2,7 +2,7 @@
 #
 # setup the image; see Dockerfile.
 #
-set -ex
+set -e
 
 cp /docker-resources/load-extensions.php /load-extensions.php
 
