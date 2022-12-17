@@ -43,6 +43,10 @@ if [[ ! -f ./LocalSettings.php ]]; then
 else
   echo ''
   echo '-----'
+  echo 'Run the update script.'
+  docker-compose exec -T mediawiki /bin/bash -c 'php maintenance/update.php'
+  echo ''
+  echo '-----'
   echo 'Resetting admin password.'
   ./scripts/reset-password.sh admin
   echo ''
