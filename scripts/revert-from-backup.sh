@@ -38,15 +38,7 @@ fi
 source ./.env
 docker-compose exec database /bin/bash -c "mysql --password=$MYSQL_PASSWORD -u wikiuser -e 'DROP DATABASE my_wiki;' && mysql --password=$MYSQL_PASSWORD -u wikiuser -e 'CREATE DATABASE my_wiki;' && mysql --password=$MYSQL_PASSWORD -u wikiuser my_wiki < /do-not-commit/backups/$ID/backup.sql"
 docker-compose exec mediawiki /bin/bash -c "cp -r /do-not-commit/backups/$ID/images/* /var/www/html/images/"
-if [ -f LocalSettings.php ]; then
-  echo 'Run the update script on backup because LocalSettings.php exists.'
-  docker-compose exec mediawiki /bin/bash -c 'php ./maintenance/update.php'
-  echo ''
-  echo '-----'
-else
-  echo 'LocalSettings.php does not exist, not attempting to run update script.'
-  echo ''
-  echo '-----'
-fi
+
+./scripts/deploy.sh
 
 echo "Backup $ID imported."
