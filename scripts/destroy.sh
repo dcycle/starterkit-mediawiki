@@ -6,8 +6,7 @@ set -e
 
 echo ''
 echo '-----'
-echo 'Destroying the do-not-commit directory.'
-docker-compose exec mediawiki /bin/bash -c 'rm -rf /do-not-commit/*'
+echo 'NOT Destroying the do-not-commit directory as it may contain backups and we do not want to lose them.'
 
 echo ''
 echo '-----'
