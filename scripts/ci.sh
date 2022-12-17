@@ -9,6 +9,10 @@ echo "Deploying the site"
 echo ""
 ./scripts/deploy.sh
 echo ""
+echo "Test the running environment"
+echo ""
+./scripts/test-running-environment.sh
+echo ""
 echo "Destroying the environment"
 echo ""
 ./scripts/destroy.sh
