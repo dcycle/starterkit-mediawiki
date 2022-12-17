@@ -39,7 +39,7 @@ source ./.env
 docker-compose exec database /bin/bash -c "mysql --password=$MYSQL_PASSWORD -u wikiuser -e 'DROP DATABASE my_wiki;' && mysql --password=$MYSQL_PASSWORD -u wikiuser -e 'CREATE DATABASE my_wiki;' && mysql --password=$MYSQL_PASSWORD -u wikiuser my_wiki < /do-not-commit/backups/$ID/backup.sql"
 docker-compose exec mediawiki /bin/bash -c "cp -r /do-not-commit/backups/$ID/images/* /var/www/html/images/"
 echo 'Run the update script on backup.'
-docker-compose exec -T mediawiki /bin/bash -c 'php maintenance/update.php'
+docker-compose exec mediawiki /bin/bash -c 'php ./maintenance/update.php'
 echo ''
 echo '-----'
 
