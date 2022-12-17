@@ -24,7 +24,7 @@ echo ""
 echo "Test the running environment, again, with the reverted backup"
 echo ""
 ./scripts/test-running-environment.sh
-eecho ""
+echo ""
 echo "Destroying the environment"
 echo ""
 ./scripts/destroy.sh
