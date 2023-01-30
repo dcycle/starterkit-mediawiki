@@ -61,7 +61,29 @@ class Hooks {
 	}
 
 	public static function onSpecialStatsAddExtra( &$extraStats, $context ) {
-		$extraStats['dcycle-mediawiki-starterkit-article-words'] = '123';
+		$extraStats['dcycle-mediawiki-starterkit-article-words'] = self::countTotalWords();
+	}
+
+	public static function countTotalWords() : string {
+		try {
+			$resultSet = self::readConnection()
+				->newSelectQueryBuilder()
+				->select(['words'])
+				->from(self::TABLE)
+				->fetchResultSet();
+
+			$return = 0;
+
+			// I know, there is a better way of doing this but I cannot find it...
+			while ($result = $resultSet->fetchRow()) {
+				$return += $result['words'];
+			}
+
+			return $return;
+		}
+		catch (\Throwable $t) {
+			return $this->throwableToString();
+		}
 	}
 
 	// The PageSaveComplete hook does not seem to get called.
