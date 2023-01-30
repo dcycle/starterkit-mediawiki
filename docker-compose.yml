@@ -19,6 +19,7 @@ services:
     links:
       - database
     volumes:
+      - "./mediawiki/CustomExtension:/var/www/html/extensions/CustomExtension"
       - "./do-not-commit:/do-not-commit"
       - "uploaded-files:/var/www/html/images"
       - "./docker-resources:/docker-resources"

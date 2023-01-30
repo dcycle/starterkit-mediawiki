@@ -5,6 +5,10 @@
 set -e
 
 echo ""
+echo "Lint code"
+echo ""
+./scripts/lint.sh
+echo ""
 echo "Deploying the site"
 echo ""
 ./scripts/deploy.sh
