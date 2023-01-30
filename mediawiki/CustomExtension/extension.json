@@ -19,7 +19,7 @@
 		"customExtensionUpdateWordCount": "CustomExtension\\Job\\UpdateWordCount"
   },
 	"AutoloadNamespaces": {
-		"CustomExtension\\": "src/",
+		"CustomExtension\\": "src/"
   },
 	"MessagesDirs": {
 		"CustomExtension": [
