@@ -48,6 +48,17 @@ This starterkit provides a single extension, [EmbedVideo](https://www.mediawiki.
 
 Extensions are installed in the Dockerfile, and you will probably need to modify that in your own fork or copy of this repo.
 
+Custom code
+-----
+
+Custom code is stored in ./mediawiki/CustomExtension, and is loaded in ./docker-resources/load-extensions.php.
+
+Our custom code was created based on https://www.mediawiki.org/wiki/Manual:Developing_extensions and does the following:
+
+* Adds a statistic using a "Words in all content pages" section to the Special:Statistics page.
+
+(https://www.mediawiki.org/wiki/Extension:CirrusSearch does the same thing but needs a connection to an ElasticSearch server, so this approach might work for simpler needs.)
+
 Errors and PHP logs
 -----
 
@@ -82,6 +93,31 @@ Follow the instructions in the following blog posts:
 
 * [Letsencrypt HTTPS for Drupal on Docker, October 03, 2017, Dcycle Blog](https://blog.dcycle.com/blog/170a6078/letsencrypt-drupal-docker/)
 * [Deploying Letsencrypt with Docker-Compose, October 06, 2017, Dcycle Blog](https://blog.dcycle.com/blog/7f3ea9e1/letsencrypt-docker-compose/)
+
+Debugging
+-----
+
+You might want to turn off OpCache during development:
+
+    docker-compose exec mediawiki /bin/bash
+
+Once logged in run:
+
+    echo 'opcache.enable=0' >> /usr/local/etc/php/php.ini
+
+You might also want to add these lines to the beginning of your LocalSettings.php file within your container:
+
+    apt-get update && apt-get install -y vim
+    vi LocalSettings.php
+
+Then add these lines at the very beginning after the `<?php` tag:
+
+    error_reporting( -1 );
+    ini_set( 'display_errors', 1 );
+
+Then exit and run:
+
+    docker-compose restart mediawiki
 
 Making a backup and restoring from a backup
 -----
@@ -119,6 +155,13 @@ Then modify the file ./scripts/remote/environments/fr/info.source.sh with the st
 Now, every time you want to fetch the data from your stage environment, you would run:
 
     ./scripts/get-database-from-remote.sh stage
+
+Troubleshooting
+-----
+
+### "Sending build context to Docker daemon" takes forever
+
+You might want to delete unused backups from the ./do-not-commit/backups directory.
 
 Resources
 -----
