@@ -22,7 +22,7 @@ echo "   Dir on container: $MYCONTAINERDIR"
 docker-compose exec -T database /bin/bash -c "mkdir -p $MYCONTAINERDIR"
 source ./.env
 echo "...Generating backup.sql, **this can take several minutes**"
-docker-compose exec -T database /bin/bash -c "export MYSQL_PWD=$MYSQL_PASSWORD; mysqldump -u wikiuser my_wiki > $MYCONTAINERDIR/backup.sql"
+docker-compose exec -T database /bin/bash -c "export MYSQL_PWD=$MYSQL_PASSWORD; mariadb-dump -u wikiuser my_wiki > $MYCONTAINERDIR/backup.sql"
 
 echo "...Exporting files**"
 docker-compose exec -T mediawiki /bin/bash -c "cp -r /var/www/html/images $MYCONTAINERDIR/images"
