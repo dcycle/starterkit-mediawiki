@@ -24,7 +24,7 @@ services:
       - "uploaded-files:/var/www/html/images"
       - "./docker-resources:/docker-resources"
   database:
-    image: mariadb
+    image: mariadb:10
     restart: always
     volumes:
       - "mysql:/var/lib/mysql"
