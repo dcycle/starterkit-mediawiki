@@ -12,7 +12,7 @@ source ./scripts/lib/assert-env.source.sh
 echo ''
 echo '-----'
 echo 'Pulling the latest docker images that we need.'
-docker pull mariadb
+docker pull mariadb:10
 docker pull mediawiki
 
 echo ''
