@@ -181,18 +181,16 @@ $wgGroupPermissions['*']['read'] = false;
 
 This ensures only logged-in users can view pages.
 
-3. Allow login and (optional) account creation
+3. Allow anonymous user to access certain pages. ex:- account creation.
 
-Make sure anonymous visitors can at least reach the login page:
+```
+// Allow everyone to read the wiki by default
+$wgGroupPermissions['*']['read'] = false;
 
-# Allow access to login and account creation
-```
-$wgGroupPermissions['*']['createaccount'] = true;
-```
-
-If you do not want the public to create accounts, disable it:
-```
-$wgGroupPermissions['*']['createaccount'] = false;
+// But restrict anonymous users to ONLY these specific pages
+$wgWhitelistRead = array(
+    "Special:CreateAccount"
+);
 ```
 
 5. Save and test
