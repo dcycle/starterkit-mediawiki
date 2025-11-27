@@ -14,4 +14,5 @@ fi
   echo "MYSQL_PASSWORD=$(./scripts/uuid.sh)"
   echo "WIKI_SALT=$(./scripts/uuid.sh)"
   echo "DOCKERPORT=$DOCKERPORT"
+  echo "COMPOSE_BAKE"=true
 }  >> "$ENVFILELOCATION"
