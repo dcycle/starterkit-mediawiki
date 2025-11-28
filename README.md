@@ -156,6 +156,55 @@ Now, every time you want to fetch the data from your stage environment, you woul
 
     ./scripts/get-database-from-remote.sh stage
 
+Restricting MediaWiki Content to Logged-In Users
+-----
+
+This section explains how to configure MediaWiki so that all pages are visible only to authenticated users.
+
+### 1. Open LocalSettings.php
+
+Locate your MediaWiki installation directory and open the file:
+
+LocalSettings.php
+
+
+This file controls all security and permission behavior for the wiki.
+
+2. Disable read access for anonymous users
+
+Find a place near the end of the file and add:
+
+# Disable reading for anonymous users
+```
+$wgGroupPermissions['*']['read'] = false;
+```
+
+This ensures only logged-in users can view pages.
+
+3. Allow anonymous user to access certain pages. ex:- account creation.
+
+```
+// Allow everyone to read the wiki by default
+$wgGroupPermissions['*']['read'] = false;
+
+// But restrict anonymous users to ONLY these specific pages
+$wgWhitelistRead = array(
+    "Special:CreateAccount"
+);
+```
+
+5. Save and test
+
+Save the LocalSettings.php file and deploy again
+
+```
+./scripts/deploy.sh
+```
+
+try visiting the wiki in a private/incognito window
+
+You are unable to see content unless login.
+
 Troubleshooting
 -----
 
